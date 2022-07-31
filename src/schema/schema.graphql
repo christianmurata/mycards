@@ -1,0 +1,44 @@
+type Field {
+    name: String!,
+    value: String!,
+}
+
+type Card {
+    id: ID!,
+    name: String!,
+    description: String!,
+    type: String!,
+    price: Float!,
+    fields: [Field!]!,
+}
+
+input FieldContent {
+    name: String!,
+    value: String!,
+}
+
+input CardContent {
+    name: String!,
+    description: String!,
+    type: String!,
+    price: Float!,
+    fields: [FieldContent!]!,
+}
+
+type Query {
+    card(id: ID!): Card
+    cards: [Card!]
+    cardsByType(type: String): [Card]
+}
+
+type Mutation {
+    createCard(card: CardContent): Card
+    deleteCard(id: ID!): Card
+    updateCard(id: ID!, card: CardContent): Card
+}
+
+type Subscription {
+    cardCreated: Card
+    cardUpdated: Card
+    cardDeleted: Card
+}
