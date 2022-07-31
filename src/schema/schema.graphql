@@ -28,13 +28,13 @@ input CardContent {
 type Query {
     card(id: ID!): Card
     cards: [Card!]
-    cardsByType(type: String): [Card]
+    cardsByType(type: String!): [Card]
 }
 
 type Mutation {
-    createCard(card: CardContent): Card
+    createCard(card: CardContent!): Card
     deleteCard(id: ID!): Card
-    updateCard(id: ID!, card: CardContent): Card
+    updateCard(id: ID!, card: CardContent!): Card
 }
 
 type Subscription {
