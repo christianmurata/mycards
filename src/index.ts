@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import { readFileSync } from 'fs';
 
-import { startServer } from './server';
+import { startServer } from './server/server';
 import { mongoConnection } from './database/connections';
 import { cardResolvers } from './resolvers/cardResolvers';
 
