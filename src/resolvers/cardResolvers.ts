@@ -12,5 +12,16 @@ export const cardResolvers: Resolvers = {
     cardsByType: async (_, { type }) => {
       return await Card.find({ type });
     },
+  },
+  Mutation: {
+    createCard: async (_, { card }) => {
+      return await (new Card(card)).save();
+    },
+    updateCard: async (_, { id, card }) => {
+      return await Card.findOneAndUpdate({ _id: id }, card, { new: true });
+    },
+    deleteCard: async (_, { id }) => {
+      return await Card.findByIdAndDelete(id);
+    },
   }
 };
